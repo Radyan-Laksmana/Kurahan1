@@ -72,11 +72,12 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // Load credentials
+// Load credentials dari ENV, bukan file
 let credentials;
 try {
     credentials = JSON.parse(process.env.GOOGLE_CREDENTIALS);
 } catch (error) {
-    console.error('Error loading GOOGLE_CREDENTIALS from env:', error.message);
+    console.error('❌ Error parsing GOOGLE_CREDENTIALS:', error.message);
     process.exit(1);
 }
 
@@ -85,7 +86,9 @@ const auth = new google.auth.GoogleAuth({
     scopes: ['https://www.googleapis.com/auth/spreadsheets']
 });
 
-const spreadsheetId = '1c_SPp4R6KlL6e3-EfRY0dtK4rfhFrCn5i4sz7cUXr30';
+// Ambil dari env juga
+const spreadsheetId = process.env.SPREADSHEET_ID;
+
 
 // Login endpoint
 app.post('/login', (req, res) => {
@@ -348,4 +351,5 @@ app.listen(PORT, () => {
     console.log('  DELETE /data/:row - Delete specific row');
     console.log('  GET  /health - Health check');
 });
+
 
