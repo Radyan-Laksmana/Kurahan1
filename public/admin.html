@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin - Website Desa</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .admin-container { max-width: 1100px; margin: 40px auto; padding: 0 16px; }
+    .admin-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+    .admin-header h1 { margin: 0; font-size: 24px; }
+    .admin-actions { display: flex; gap: 8px; align-items: center; }
+    .admin-card { background: #ffffff; border-radius: 12px; padding: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.06); margin-bottom: 24px; }
+    .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group span.help { color: #6b7280; font-size: 12px; }
+    .form-group input, .form-group textarea, .form-group select { padding: 10px 12px; border-radius: 8px; border: 1px solid #e5e7eb; }
+    .form-group textarea { resize: vertical; }
+    .span-2 { grid-column: span 2; }
+    .with-upload { display: flex; gap: 8px; }
+    .with-upload .btn { white-space: nowrap; }
+    .preview { width: 200px; height: 120px; object-fit: cover; border-radius: 8px; border: 1px solid #e5e7eb; margin-top: 8px; }
+    .btn { padding: 8px 12px; border-radius: 8px; border: 1px solid #e5e7eb; background: #f3f4f6; cursor: pointer; }
+    .btn.primary { background: #16a34a; color: #fff; border-color: #16a34a; }
+    .btn.danger { background: #ef4444; color: #fff; border-color: #ef4444; }
+    .btn:disabled { opacity: .6; cursor: not-allowed; }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 10px; border-bottom: 1px solid #e5e7eb; text-align: left; }
+    th { background: #f9fafb; font-weight: 600; }
+    .muted { color: #6b7280; font-size: 12px; }
+    /* Login overlay */
+    .login-overlay { position: fixed; inset: 0; background: rgba(15,23,42,.9); display: flex; align-items: center; justify-content: center; z-index: 50; }
+    .login-card { background: #ffffff; width: 100%; max-width: 420px; border-radius: 12px; padding: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.25); }
+    .login-card h2 { margin-top: 0; }
+    .toast { position: fixed; top: 16px; right: 16px; background: #111827; color: #fff; padding: 10px 12px; border-radius: 8px; display: none; z-index: 60; }
+  </style>
+</head>
+<body>
+  <div class="admin-container">
+    <div class="admin-header">
+      <h1>Admin Panel</h1>
+      <div class="admin-actions">
+        <button id="logout" class="btn">Keluar</button>
+        <button id="refresh" class="btn">Refresh</button>
+      </div>
+    </div>
+
+    <div class="admin-card">
+      <h2>Form Entri / Edit</h2>
+      <form id="entry-form" class="form-grid" autocomplete="off">
+        <input type="hidden" id="rowNumber" />
+
+        <div class="form-group span-2">
+          <label for="judul">Judul</label>
+          <input id="judul" type="text" />
+        </div>
+        <div class="form-group span-2">
+          <label for="deskripsi">Deskripsi</label>
+          <textarea id="deskripsi" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="penulis">Penulis</label>
+          <input id="penulis" type="text" />
+        </div>
+        <div class="form-group">
+          <label for="tanggal">Tanggal</label>
+          <input id="tanggal" type="text" placeholder="dd/mm/yyyy" />
+        </div>
+
+        <div class="form-group span-2">
+          <label for="gambar">Gambar (URL)</label>
+          <div class="with-upload">
+            <input id="gambar" type="url" placeholder="https://... atau /uploads/..." />
+            <input id="upload-berita" type="file" accept="image/*" hidden />
+            <button type="button" class="btn" data-upload="upload-berita" data-target="gambar">Upload</button>
+          </div>
+          <img id="preview-gambar" class="preview" alt="preview" />
+        </div>
+
+        <div class="form-group">
+          <label for="jabatan">Jabatan</label>
+          <input id="jabatan" type="text" />
+        </div>
+        <div class="form-group">
+          <label for="nama">Nama</label>
+          <input id="nama" type="text" />
+        </div>
+        <div class="form-group">
+          <label for="kontak">Kontak</label>
+          <input id="kontak" type="text" />
+        </div>
+
+        <div class="form-group">
+          <label for="lakiLaki">Laki Laki</label>
+          <input id="lakiLaki" type="number" />
+        </div>
+        <div class="form-group">
+          <label for="perempuan">Perempuan</label>
+          <input id="perempuan" type="number" />
+        </div>
+        <div class="form-group">
+          <label for="keluarga">Keluarga</label>
+          <input id="keluarga" type="number" />
+        </div>
+        <div class="form-group">
+          <label for="anakBalita">Anak Kecil/Balita</label>
+          <input id="anakBalita" type="number" />
+        </div>
+
+        <div class="form-group">
+          <label for="namaUmkm">Nama UMKM</label>
+          <input id="namaUmkm" type="text" />
+        </div>
+        <div class="form-group span-2">
+          <label for="deskripsiUmkm">Deskripsi UMKM</label>
+          <textarea id="deskripsiUmkm" rows="3"></textarea>
+        </div>
+        <div class="form-group span-2">
+          <label for="gambarUmkm">Gambar UMKM (URL)</label>
+          <div class="with-upload">
+            <input id="gambarUmkm" type="url" placeholder="https://... atau /uploads/..." />
+            <input id="upload-umkm" type="file" accept="image/*" hidden />
+            <button type="button" class="btn" data-upload="upload-umkm" data-target="gambarUmkm">Upload</button>
+          </div>
+          <img id="preview-gambar-umkm" class="preview" alt="preview" />
+        </div>
+        <div class="form-group">
+          <label for="pengelola">Pengelola</label>
+          <input id="pengelola" type="text" />
+        </div>
+
+        <div class="form-group span-2">
+          <button id="create-btn" class="btn primary" type="submit">Simpan Baru</button>
+          <button id="update-btn" class="btn" type="button" disabled>Update Baris</button>
+          <button id="reset-form" class="btn" type="button">Bersihkan</button>
+          <span id="current-row" class="muted"></span>
+        </div>
+      </form>
+    </div>
+
+    <div class="admin-card">
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
+        <h2 style="margin:0;">Data Spreadsheet</h2>
+        <input id="search" type="search" placeholder="Cari judul/nama..." style="padding:8px 12px; border-radius:8px; border:1px solid #e5e7eb;" />
+      </div>
+      <div class="table-wrap" style="margin-top:12px;">
+        <table id="rows-table">
+          <thead>
+            <tr>
+              <th>Row</th>
+              <th>Judul</th>
+              <th>Tanggal</th>
+              <th>Nama</th>
+              <th>UMKM</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="rows-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div id="login" class="login-overlay" style="display:none;">
+    <div class="login-card">
+      <h2>Login Admin</h2>
+      <div class="form-group">
+        <label for="admin-token">Masukkan Token Admin</label>
+        <input id="admin-token" type="password" placeholder="Token rahasia" />
+        <span class="help">Minta token kepada pengelola sistem. Token ini tidak dibagikan ke publik.</span>
+      </div>
+      <div style="display:flex; gap:8px;">
+        <button id="login-btn" class="btn primary">Masuk</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script src="admin.js"></script>
+</body>
+</html>
+
+

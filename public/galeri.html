@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeri & Berita - Desa Maju Bersama</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <img src="https://via.placeholder.com/50x50/4CAF50/white?text=D" alt="Logo Desa" class="logo-img">
+        <span class="logo-text">Desa Maju Bersama</span>
+      </div>
+      <ul class="nav-menu" id="nav-menu">
+        <li class="nav-item">
+          <a href="index.html" class="nav-link">Beranda</a>
+        </li>
+        <li class="nav-item">
+          <a href="index.html#profil" class="nav-link">Profil Desa</a>
+        </li>
+        <li class="nav-item">
+          <a href="index.html#potensi" class="nav-link">Potensi & UMKM</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="galeri.html" class="nav-link active">Galeri & Berita</a>
+        </li>
+        <li class="nav-item">
+          <a href="index.html#kontak" class="nav-link">Kontak</a>
+        </li>
+        <li class="nav-item">
+          <a href="admin-login.html" class="nav-link admin-link">Admin</a>
+        </li>
+      </ul>
+      <div class="hamburger" id="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Galeri & Berita</h1>
+      <p>Dokumentasi kegiatan, event, dan berita terkini Desa Maju Bersama</p>
+    </div>
+  </section>
+
+  <!-- Filter Section -->
+  <section class="filter-section">
+    <div class="container">
+      <div class="filter-tabs">
+        <button class="filter-tab active" data-filter="all">Semua</button>
+        <button class="filter-tab" data-filter="galeri">Galeri Foto</button>
+        <button class="filter-tab" data-filter="berita">Berita</button>
+        <button class="filter-tab" data-filter="event">Event</button>
+        <button class="filter-tab" data-filter="kegiatan">Kegiatan</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Galeri Foto -->
+  <section class="galeri-section" id="galeri-foto">
+    <div class="container">
+      <h2 class="section-title">Galeri Foto</h2>
+      <div class="galeri-grid">
+        <div class="galeri-item" data-category="galeri kegiatan">
+          <img src="https://via.placeholder.com/300x200/4CAF50/white?text=Gotong+Royong" alt="Gotong Royong">
+          <div class="galeri-overlay">
+            <h4>Gotong Royong</h4>
+            <p>Kegiatan gotong royong membersihkan lingkungan desa</p>
+            <span class="galeri-date">20 Desember 2024</span>
+          </div>
+        </div>
+        <div class="galeri-item" data-category="galeri event">
+          <img src="https://via.placeholder.com/300x200/4CAF50/white?text=Event+Desa" alt="Event Desa">
+          <div class="galeri-overlay">
+            <h4>Festival Budaya Desa</h4>
+            <p>Festival budaya desa tahunan dengan berbagai pertunjukan tradisional</p>
+            <span class="galeri-date">18 Desember 2024</span>
+          </div>
+        </div>
+        <div class="galeri-item" data-category="galeri kegiatan">
+          <img src="https://via.placeholder.com/300x200/4CAF50/white?text=Agenda+RT" alt="Agenda RT">
+          <div class="galeri-overlay">
+            <h4>Rapat Koordinasi RT/RW</h4>
+            <p>Rapat koordinasi RT/RW membahas program desa</p>
+            <span class="galeri-date">15 Desember 2024</span>
+          </div>
+        </div>
+        <div class="galeri-item" data-category="galeri kegiatan">
+          <img src="https://via.placeholder.com/300x200/4CAF50/white?text=Kegiatan+Desa" alt="Kegiatan Desa">
+          <div class="galeri-overlay">
+            <h4>Pelatihan Warga Desa</h4>
+            <p>Pelatihan keterampilan untuk pemberdayaan ekonomi warga</p>
+            <span class="galeri-date">12 Desember 2024</span>
+          </div>
+        </div>
+        <div class="galeri-item" data-category="galeri infrastruktur">
+          <img src="https://via.placeholder.com/300x200/4CAF50/white?text=Infrastruktur" alt="Infrastruktur">
+          <div class="galeri-overlay">
+            <h4>Pembangunan Jalan Desa</h4>
+            <p>Proses pembangunan jalan desa untuk akses yang lebih baik</p>
+            <span class="galeri-date">10 Desember 2024</span>
+          </div>
+        </div>
+        <div class="galeri-item" data-category="galeri umkm">
+          <img src="https://via.placeholder.com/300x200/4CAF50/white?text=UMKM+Desa" alt="UMKM Desa">
+          <div class="galeri-overlay">
+            <h4>Pameran UMKM Desa</h4>
+            <p>Pameran produk UMKM desa untuk promosi dan penjualan</p>
+            <span class="galeri-date">8 Desember 2024</span>
+          </div>
+        </div>
+        <div class="galeri-item" data-category="galeri sosial">
+          <img src="https://via.placeholder.com/300x200/4CAF50/white?text=Bantuan+Sosial" alt="Bantuan Sosial">
+          <div class="galeri-overlay">
+            <h4>Bantuan Sosial</h4>
+            <p>Penyaluran bantuan sembako untuk warga kurang mampu</p>
+            <span class="galeri-date">5 Desember 2024</span>
+          </div>
+        </div>
+        <div class="galeri-item" data-category="galeri pendidikan">
+          <img src="https://via.placeholder.com/300x200/4CAF50/white?text=Pendidikan" alt="Pendidikan">
+          <div class="galeri-overlay">
+            <h4>Kegiatan Pendidikan</h4>
+            <p>Program pendidikan non-formal untuk warga desa</p>
+            <span class="galeri-date">3 Desember 2024</span>
+          </div>
+        </div>
+        <div class="galeri-item" data-category="galeri kesehatan">
+          <img src="https://via.placeholder.com/300x200/4CAF50/white?text=Kesehatan" alt="Kesehatan">
+          <div class="galeri-overlay">
+            <h4>Posyandu Lansia</h4>
+            <p>Kegiatan posyandu untuk lansia di desa</p>
+            <span class="galeri-date">1 Desember 2024</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Berita Terbaru -->
+  <section class="berita-section" id="berita-terbaru">
+    <div class="container">
+      <h2 class="section-title">Berita Terbaru</h2>
+      <div class="berita-list" id="berita-list">
+        
+      </div>
+      
+      <!-- Pagination -->
+      <div class="pagination">
+        <button class="page-btn active">1</button>
+        <button class="page-btn">2</button>
+        <button class="page-btn">3</button>
+        <button class="page-btn">4</button>
+        <button class="page-btn next">Selanjutnya <i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Agenda Kegiatan -->
+  <section class="agenda-section" id="agenda-kegiatan">
+    <div class="container">
+      <h2 class="section-title">Agenda Kegiatan</h2>
+      <div class="agenda-list">
+        <div class="agenda-item">
+          <div class="agenda-date">
+            <span class="day">25</span>
+            <span class="month">Des</span>
+          </div>
+          <div class="agenda-content">
+            <h3>Rapat Koordinasi RT/RW</h3>
+            <p>Rapat koordinasi bulanan untuk membahas program dan kegiatan desa</p>
+            <span class="agenda-time"><i class="fas fa-clock"></i> 19:00 WIB</span>
+            <span class="agenda-location"><i class="fas fa-map-marker-alt"></i> Balai Desa</span>
+          </div>
+        </div>
+        
+        <div class="agenda-item">
+          <div class="agenda-date">
+            <span class="day">28</span>
+            <span class="month">Des</span>
+          </div>
+          <div class="agenda-content">
+            <h3>Gotong Royong Bersih Desa</h3>
+            <p>Kegiatan gotong royong membersihkan lingkungan desa</p>
+            <span class="agenda-time"><i class="fas fa-clock"></i> 07:00 WIB</span>
+            <span class="agenda-location"><i class="fas fa-map-marker-alt"></i> Seluruh Desa</span>
+          </div>
+        </div>
+        
+        <div class="agenda-item">
+          <div class="agenda-date">
+            <span class="day">30</span>
+            <span class="month">Des</span>
+          </div>
+          <div class="agenda-content">
+            <h3>Festival Budaya Desa</h3>
+            <p>Festival budaya tahunan dengan berbagai pertunjukan tradisional</p>
+            <span class="agenda-time"><i class="fas fa-clock"></i> 18:00 WIB</span>
+            <span class="agenda-location"><i class="fas fa-map-marker-alt"></i> Lapangan Desa</span>
+          </div>
+        </div>
+        
+        <div class="agenda-item">
+          <div class="agenda-date">
+            <span class="day">2</span>
+            <span class="month">Jan</span>
+          </div>
+          <div class="agenda-content">
+            <h3>Pelatihan UMKM</h3>
+            <p>Pelatihan pengembangan usaha untuk warga desa</p>
+            <span class="agenda-time"><i class="fas fa-clock"></i> 09:00 WIB</span>
+            <span class="agenda-location"><i class="fas fa-map-marker-alt"></i> Balai Desa</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Desa Maju Bersama</h4>
+          <p>Bersama Membangun Desa yang Maju, Mandiri, dan Sejahtera</p>
+        </div>
+        <div class="footer-section">
+          <h4>Link Cepat</h4>
+          <ul>
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="index.html#profil">Profil Desa</a></li>
+            <li><a href="index.html#potensi">Potensi & UMKM</a></li>
+
+            <li><a href="galeri.html">Galeri & Berita</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Kontak</h4>
+          <p>Jl. Raya Desa Maju No. 123</p>
+          <p>Telp: +62 123 4567 890</p>
+          <p>Email: desamajubersama@email.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Desa Maju Bersama. Semua hak dilindungi.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+

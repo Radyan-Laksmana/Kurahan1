@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desa Maju Bersama - Website Profil Desa</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <img src="https://via.placeholder.com/50x50/4CAF50/white?text=D" alt="Logo Desa" class="logo-img">
+        <span class="logo-text">Desa Maju Bersama</span>
+      </div>
+      <ul class="nav-menu" id="nav-menu">
+        <li class="nav-item">
+          <a href="index.html" class="nav-link active">Beranda</a>
+        </li>
+        <li class="nav-item">
+          <a href="#profil" class="nav-link">Profil Desa</a>
+        </li>
+        <li class="nav-item">
+          <a href="#potensi" class="nav-link">Potensi & UMKM</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="galeri.html" class="nav-link">Galeri & Berita</a>
+        </li>
+        <li class="nav-item">
+          <a href="#kontak" class="nav-link">Kontak</a>
+        </li>
+        <li class="nav-item">
+          <a href="admin-login.html" class="nav-link admin-link">Admin</a>
+        </li>
+      </ul>
+      <div class="hamburger" id="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="beranda" class="hero">
+    <div class="hero-container">
+      <div class="hero-content">
+        <h1 class="hero-title">Selamat Datang di Desa Maju Bersama</h1>
+        <p class="hero-subtitle">"Bersama Membangun Desa yang Maju, Mandiri, dan Sejahtera"</p>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <i class="fas fa-users"></i>
+            <span class="stat-number">2,500+</span>
+            <span class="stat-label">Penduduk</span>
+          </div>
+          <div class="stat-item">
+            <i class="fas fa-home"></i>
+            <span class="stat-number">15</span>
+            <span class="stat-label">RT/RW</span>
+          </div>
+          <div class="stat-item">
+            <i class="fas fa-store"></i>
+            <span class="stat-number">50+</span>
+            <span class="stat-label">UMKM</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://via.placeholder.com/400x300/4CAF50/white?text=Desa+Landscape" alt="Landscape Desa">
+      </div>
+    </div>
+  </section>
+
+  <!-- Sambutan Lurah -->
+  <section class="sambutan">
+    <div class="container">
+      <div class="sambutan-content">
+        <div class="lurah-photo">
+          <img src="https://via.placeholder.com/200x250/4CAF50/white?text=Lurah" alt="Foto Lurah">
+        </div>
+        <div class="sambutan-text">
+          <h2>Sambutan Lurah</h2>
+          <h3>Bapak Ahmad Supriyadi, S.Sos</h3>
+          <p>"Assalamu'alaikum Warrahmatullahi Wabarakatuh. Selamat datang di website resmi Desa Maju Bersama. Kami berkomitmen untuk terus mengembangkan desa ini menjadi desa yang maju, mandiri, dan sejahtera melalui berbagai program pemberdayaan masyarakat dan pengembangan potensi lokal."</p>
+          <p>Bersama-sama kita wujudkan visi desa yang berkelanjutan dan inovatif untuk kesejahteraan seluruh warga desa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Headline Berita -->
+  <section class="headline-news">
+    <div class="container">
+      <h2 class="section-title">Berita Terkini</h2>
+      <div class="news-grid" id="news-grid">
+        <div class="news-card featured">
+          <img src="https://via.placeholder.com/400x250/4CAF50/white?text=Berita+Utama" alt="Berita Utama">
+          <div class="news-content">
+            <span class="news-category">Utama</span>
+            <h3>Pembangunan Jembatan Desa Selesai</h3>
+            <p>Jembatan penghubung antar dusun telah selesai dibangun dan siap digunakan warga desa.</p>
+            <span class="news-date">15 Desember 2024</span>
+          </div>
+        </div>
+        <div class="news-card">
+          <img src="https://via.placeholder.com/300x200/4CAF50/white?text=Berita+2" alt="Berita 2">
+          <div class="news-content">
+            <span class="news-category">Ekonomi</span>
+            <h3>Pelatihan UMKM Desa</h3>
+            <p>Program pelatihan untuk pengembangan usaha mikro kecil menengah desa.</p>
+            <span class="news-date">12 Desember 2024</span>
+          </div>
+        </div>
+        <div class="news-card">
+          <img src="https://via.placeholder.com/300x200/4CAF50/white?text=Berita+3" alt="Berita 3">
+          <div class="news-content">
+            <span class="news-category">Sosial</span>
+            <h3>Gotong Royong Bersih Desa</h3>
+            <p>Kegiatan gotong royong membersihkan lingkungan desa bersama warga.</p>
+            <span class="news-date">10 Desember 2024</span>
+          </div>
+        </div>
+      </div>
+      <div class="news-more">
+        <a href="galeri.html" class="btn-more">Lihat Semua Berita</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Profil Desa -->
+  <section id="profil" class="profil-desa">
+    <div class="container">
+      <h2 class="section-title">Profil Desa</h2>
+      
+      <!-- Sejarah -->
+      <div class="sejarah-section">
+        <h3>Sejarah Desa</h3>
+        <div class="sejarah-content">
+          <div class="sejarah-text">
+            <p>Desa Maju Bersama didirikan pada tahun 1920 oleh sekelompok petani yang mencari lahan subur untuk bercocok tanam. Nama desa ini diambil dari semangat gotong royong dan kebersamaan yang menjadi filosofi hidup masyarakat desa sejak awal.</p>
+            <p>Seiring berjalannya waktu, desa ini berkembang dari komunitas kecil menjadi desa yang maju dengan berbagai potensi ekonomi dan sosial budaya yang kaya. Masyarakat desa tetap mempertahankan nilai-nilai tradisional sambil mengadopsi teknologi modern untuk kemajuan desa.</p>
+          </div>
+          <div class="sejarah-image">
+            <img src="https://via.placeholder.com/400x300/4CAF50/white?text=Sejarah+Desa" alt="Sejarah Desa">
+          </div>
+        </div>
+      </div>
+
+      <!-- Struktur Organisasi -->
+      <div class="struktur-section">
+        <h3>Struktur Organisasi</h3>
+        <div class="struktur-grid">
+          <div class="struktur-card">
+            <div class="struktur-icon">
+              <i class="fas fa-user-tie"></i>
+            </div>
+            <h4>Kepala Desa</h4>
+            <p>Ahmad Supriyadi, S.Sos</p>
+          </div>
+          <div class="struktur-card">
+            <div class="struktur-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <h4>Sekretaris Desa</h4>
+            <p>Siti Nurhaliza, S.Pd</p>
+          </div>
+          <div class="struktur-card">
+            <div class="struktur-icon">
+              <i class="fas fa-calculator"></i>
+            </div>
+            <h4>Bendahara</h4>
+            <p>Budi Santoso, S.E</p>
+          </div>
+          <div class="struktur-card">
+            <div class="struktur-icon">
+              <i class="fas fa-clipboard-list"></i>
+            </div>
+            <h4>Kasi Pemerintahan</h4>
+            <p>Rina Marlina, S.Sos</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Data Kependudukan -->
+      <div class="kependudukan-section">
+        <h3>Data Kependudukan</h3>
+        <div class="kependudukan-grid">
+          <div class="data-card">
+            <i class="fas fa-male"></i>
+            <h4>Laki-laki</h4>
+            <span class="data-number">1,250</span>
+          </div>
+          <div class="data-card">
+            <i class="fas fa-female"></i>
+            <h4>Perempuan</h4>
+            <span class="data-number">1,250</span>
+          </div>
+          <div class="data-card">
+            <i class="fas fa-home"></i>
+            <h4>Kepala Keluarga</h4>
+            <span class="data-number">625</span>
+          </div>
+          <div class="data-card">
+            <i class="fas fa-baby"></i>
+            <h4>Balita</h4>
+            <span class="data-number">150</span>
+          </div>
+          <div class="data-card">
+            <i class="fas fa-graduation-cap"></i>
+            <h4>Usia Sekolah</h4>
+            <span class="data-number">450</span>
+          </div>
+          <div class="data-card">
+            <i class="fas fa-user-graduate"></i>
+            <h4>Lulusan SMA+</h4>
+            <span class="data-number">800</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Potensi & UMKM -->
+  <section id="potensi" class="potensi-umkm">
+    <div class="container">
+      <h2 class="section-title">Potensi & UMKM</h2>
+      
+      <!-- Agrowisata -->
+      <div class="agrowisata-section">
+        <h3>Agrowisata Desa</h3>
+        <div class="agrowisata-content">
+          <div class="agrowisata-text">
+            <p>Desa Maju Bersama memiliki potensi agrowisata yang menarik dengan kebun buah-buahan, sawah organik, dan peternakan tradisional. Wisatawan dapat menikmati pengalaman bertani, memetik buah langsung dari pohon, dan belajar tentang pertanian organik.</p>
+            <div class="agrowisata-features">
+              <div class="feature-item">
+                <i class="fas fa-apple-alt"></i>
+                <span>Kebun Buah-buahan</span>
+              </div>
+              <div class="feature-item">
+                <i class="fas fa-seedling"></i>
+                <span>Sawah Organik</span>
+              </div>
+              <div class="feature-item">
+                <i class="fas fa-cow"></i>
+                <span>Peternakan Tradisional</span>
+              </div>
+            </div>
+          </div>
+          <div class="agrowisata-image">
+            <img src="https://via.placeholder.com/400x300/4CAF50/white?text=Agrowisata" alt="Agrowisata">
+          </div>
+        </div>
+      </div>
+
+      <!-- UMKM -->
+      <div class="umkm-section">
+        <h3>Usaha Mikro Kecil Menengah (UMKM)</h3>
+        <div class="umkm-grid" id="umkm-grid">
+          <!-- Static fallback content -->
+          <div class="umkm-card">
+            <img src="https://via.placeholder.com/300x200/4CAF50/white?text=UMKM+1" alt="UMKM 1">
+            <div class="umkm-content">
+              <h4>Kerajinan Bambu</h4>
+              <p>Produksi berbagai kerajinan dari bambu seperti tikar, keranjang, dan furniture.</p>
+              <span class="umkm-owner">Pemilik: Pak Sutejo</span>
+            </div>
+          </div>
+          <div class="umkm-card">
+            <img src="https://via.placeholder.com/300x200/4CAF50/white?text=UMKM+2" alt="UMKM 2">
+            <div class="umkm-content">
+              <h4>Makanan Tradisional</h4>
+              <p>Produksi makanan tradisional seperti dodol, tape, dan berbagai jajanan pasar.</p>
+              <span class="umkm-owner">Pemilik: Ibu Siti</span>
+            </div>
+          </div>
+          <div class="umkm-card">
+            <img src="https://via.placeholder.com/300x200/4CAF50/white?text=UMKM+3" alt="UMKM 3">
+            <div class="umkm-content">
+              <h4>Peternakan Ayam</h4>
+              <p>Peternakan ayam kampung dan produksi telur organik berkualitas tinggi.</p>
+              <span class="umkm-owner">Pemilik: Pak Ahmad</span>
+            </div>
+          </div>
+          <div class="umkm-card">
+            <img src="https://via.placeholder.com/300x200/4CAF50/white?text=UMKM+4" alt="UMKM 4">
+            <div class="umkm-content">
+              <h4>Konveksi</h4>
+              <p>Produksi pakaian dan seragam dengan kualitas terbaik dan harga terjangkau.</p>
+              <span class="umkm-owner">Pemilik: Ibu Rina</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Kontak -->
+  <section id="kontak" class="kontak">
+    <div class="container">
+      <h2 class="section-title">Kontak</h2>
+      
+      <div class="kontak-content">
+        <div class="kontak-info">
+          <h3>Informasi Kontak</h3>
+          <div class="kontak-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <h4>Alamat</h4>
+              <p>Jl. Raya Desa Maju No. 123<br>Kecamatan Maju Jaya<br>Kabupaten Sejahtera<br>Provinsi Indonesia</p>
+            </div>
+          </div>
+          
+          <div class="kontak-item">
+            <i class="fas fa-phone"></i>
+            <div>
+              <h4>Telepon</h4>
+              <p>+62 123 4567 890</p>
+              <p>+62 123 4567 891</p>
+            </div>
+          </div>
+          
+          <div class="kontak-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <h4>Email</h4>
+              <p>desamajubersama@email.com</p>
+              <p>sekretariat@desamajubersama.com</p>
+            </div>
+          </div>
+          
+          <div class="kontak-item">
+            <i class="fas fa-clock"></i>
+            <div>
+              <h4>Jam Operasional</h4>
+              <p>Senin - Jumat: 08:00 - 16:00</p>
+              <p>Sabtu: 08:00 - 12:00</p>
+              <p>Minggu: Tutup</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Desa Maju Bersama</h4>
+          <p>Bersama Membangun Desa yang Maju, Mandiri, dan Sejahtera</p>
+        </div>
+        <div class="footer-section">
+          <h4>Link Cepat</h4>
+          <ul>
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="#profil">Profil Desa</a></li>
+            <li><a href="#potensi">Potensi & UMKM</a></li>
+
+            <li><a href="galeri.html">Galeri & Berita</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Kontak</h4>
+          <p>Jl. Raya Desa Maju No. 123</p>
+          <p>Telp: +62 123 4567 890</p>
+          <p>Email: desamajubersama@email.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Desa Maju Bersama. Semua hak dilindungi.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

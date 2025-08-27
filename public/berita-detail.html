@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detail Berita - Desa Maju Bersama</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <img src="https://via.placeholder.com/50x50/4CAF50/white?text=D" alt="Logo Desa" class="logo-img">
+        <span class="logo-text">Desa Maju Bersama</span>
+      </div>
+      <ul class="nav-menu" id="nav-menu">
+        <li class="nav-item">
+          <a href="index.html" class="nav-link">Beranda</a>
+        </li>
+        <li class="nav-item">
+          <a href="index.html#profil" class="nav-link">Profil Desa</a>
+        </li>
+        <li class="nav-item">
+          <a href="index.html#potensi" class="nav-link">Potensi & UMKM</a>
+        </li>
+        <li class="nav-item">
+          <a href="galeri.html" class="nav-link">Galeri & Berita</a>
+        </li>
+        <li class="nav-item">
+          <a href="index.html#kontak" class="nav-link">Kontak</a>
+        </li>
+        <li class="nav-item">
+          <a href="admin-login.html" class="nav-link admin-link">Admin</a>
+        </li>
+      </ul>
+      <div class="hamburger" id="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Breadcrumb -->
+  <section class="breadcrumb">
+    <div class="container">
+      <nav class="breadcrumb-nav">
+        <a href="index.html">Beranda</a>
+        <i class="fas fa-chevron-right"></i>
+        <a href="galeri.html">Galeri & Berita</a>
+        <i class="fas fa-chevron-right"></i>
+        <span id="breadcrumb-title">Detail Berita</span>
+      </nav>
+    </div>
+  </section>
+
+  <!-- News Detail Content -->
+  <section class="news-detail">
+    <div class="container">
+      <article class="news-article" id="news-article">
+        <!-- Content will be loaded dynamically -->
+        <div class="loading">
+          <i class="fas fa-spinner fa-spin"></i>
+          <p>Memuat berita...</p>
+        </div>
+      </article>
+
+      <!-- Related News -->
+      <section class="related-news">
+        <h3>Berita Terkait</h3>
+        <div class="related-news-grid" id="related-news-grid">
+          <!-- Related news will be loaded here -->
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Desa Maju Bersama</h4>
+          <p>Bersama Membangun Desa yang Maju, Mandiri, dan Sejahtera</p>
+        </div>
+        <div class="footer-section">
+          <h4>Link Cepat</h4>
+          <ul>
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="index.html#profil">Profil Desa</a></li>
+            <li><a href="index.html#potensi">Potensi & UMKM</a></li>
+            <li><a href="galeri.html">Galeri & Berita</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Kontak</h4>
+          <p>Jl. Raya Desa Maju No. 123</p>
+          <p>Telp: +62 123 4567 890</p>
+          <p>Email: desamajubersama@email.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Desa Maju Bersama. Semua hak dilindungi.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // News detail page specific functionality
+    async function loadNewsDetail() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const newsId = urlParams.get('id');
+      
+      if (!newsId) {
+        showError('ID berita tidak ditemukan. Silakan pilih berita dari halaman Galeri & Berita.');
+        return;
+      }
+
+      try {
+        const values = await fetchSheetValues();
+        if (!Array.isArray(values) || values.length === 0) {
+          showError('Tidak ada data berita tersedia');
+          return;
+        }
+
+        const headerIndex = buildHeaderIndex(values);
+        const records = toRecords(values, headerIndex);
+        
+        // Find the specific news by ID (using row index)
+        const newsIndex = parseInt(newsId);
+        const newsData = records[newsIndex];
+        
+        if (!newsData || !newsData.judul) {
+          showError('Berita tidak ditemukan');
+          return;
+        }
+
+        // Update page title
+        document.title = `${newsData.judul} - Desa Maju Bersama`;
+        document.getElementById('breadcrumb-title').textContent = newsData.judul;
+
+        // Render the news detail
+        renderNewsDetail(newsData);
+        
+        // Load related news
+        loadRelatedNews(records, newsIndex);
+
+      } catch (error) {
+        console.error('Error loading news detail:', error);
+        showError('Gagal memuat detail berita');
+      }
+    }
+
+    function renderNewsDetail(newsData) {
+      const article = document.getElementById('news-article');
+      const fallbackImg = 'https://via.placeholder.com/800x400/4CAF50/ffffff?text=Berita+Desa';
+      
+      article.innerHTML = `
+        <header class="news-header">
+          <div class="news-meta">
+            <span class="news-category">Berita</span>
+            <span class="news-date">
+              <i class="fas fa-calendar"></i>
+              ${newsData.tanggal || 'Tanggal tidak tersedia'}
+            </span>
+            ${newsData.penulis ? `
+              <span class="news-author">
+                <i class="fas fa-user"></i>
+                Oleh: ${newsData.penulis}
+              </span>
+            ` : ''}
+          </div>
+          <h1 class="news-title">${newsData.judul}</h1>
+        </header>
+        
+        <div class="news-image">
+          <img src="${newsData.gambar || fallbackImg}" 
+               alt="${newsData.judul}" 
+               onerror="this.src='${fallbackImg}'">
+        </div>
+        
+        <div class="news-content">
+          <p class="news-description">${newsData.deskripsi || 'Deskripsi tidak tersedia'}</p>
+        </div>
+        
+        <div class="news-footer">
+          <a href="galeri.html" class="btn-back">
+            <i class="fas fa-arrow-left"></i>
+            Kembali ke Berita
+          </a>
+          <div class="news-share">
+            <span>Bagikan:</span>
+            <a href="#" onclick="shareOnFacebook()" class="share-btn facebook">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="#" onclick="shareOnTwitter()" class="share-btn twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" onclick="shareOnWhatsApp()" class="share-btn whatsapp">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+      `;
+    }
+
+    function loadRelatedNews(allRecords, currentIndex) {
+      const relatedGrid = document.getElementById('related-news-grid');
+      const newsRecords = allRecords.filter(r => r.judul);
+      
+      // Get 3 related news (excluding current one)
+      const relatedNews = newsRecords
+        .filter((_, index) => index !== currentIndex)
+        .slice(0, 3);
+      
+      if (relatedNews.length === 0) {
+        relatedGrid.innerHTML = '<p>Tidak ada berita terkait</p>';
+        return;
+      }
+
+      const fallbackImg = 'https://via.placeholder.com/300x200/4CAF50/ffffff?text=Berita+Desa';
+      
+      relatedGrid.innerHTML = relatedNews.map((news, index) => `
+        <div class="related-news-card">
+          <img src="${news.gambar || fallbackImg}" 
+               alt="${news.judul}" 
+               onerror="this.src='${fallbackImg}'">
+          <div class="related-news-content">
+            <h4>${news.judul}</h4>
+            <p>${news.deskripsi ? news.deskripsi.substring(0, 100) + '...' : ''}</p>
+            <span class="related-news-date">${news.tanggal || ''}</span>
+            <a href="berita-detail.html?id=${newsRecords.indexOf(news)}" class="read-more">
+              Baca Selengkapnya
+            </a>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function showError(message) {
+      const article = document.getElementById('news-article');
+      article.innerHTML = `
+        <div class="error-message">
+          <i class="fas fa-exclamation-triangle"></i>
+          <h2>Berita Tidak Ditemukan</h2>
+          <p>${message}</p>
+          <a href="galeri.html" class="btn-back">Kembali ke Berita</a>
+        </div>
+      `;
+    }
+
+    // Social sharing functions
+    function shareOnFacebook() {
+      const url = encodeURIComponent(window.location.href);
+      const title = encodeURIComponent(document.title);
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+    }
+
+    function shareOnTwitter() {
+      const url = encodeURIComponent(window.location.href);
+      const title = encodeURIComponent(document.title);
+      window.open(`https://twitter.com/intent/tweet?url=${url}&text=${title}`, '_blank');
+    }
+
+    function shareOnWhatsApp() {
+      const url = encodeURIComponent(window.location.href);
+      const title = encodeURIComponent(document.title);
+      window.open(`https://wa.me/?text=${title}%20${url}`, '_blank');
+    }
+
+    // Load news detail when page loads
+    document.addEventListener('DOMContentLoaded', loadNewsDetail);
+  </script>
+</body>
+</html>
