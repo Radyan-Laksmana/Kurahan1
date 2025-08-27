@@ -74,10 +74,9 @@ const upload = multer({ storage });
 // Load credentials
 let credentials;
 try {
-    credentials = JSON.parse(fs.readFileSync('credentials.json'));
+    credentials = JSON.parse(process.env.GOOGLE_CREDENTIALS);
 } catch (error) {
-    console.error('Error loading credentials.json. Please make sure the file exists and contains valid Google API credentials.');
-    console.error('You can get credentials from: https://console.cloud.google.com/apis/credentials');
+    console.error('Error loading GOOGLE_CREDENTIALS from env:', error.message);
     process.exit(1);
 }
 
@@ -349,3 +348,4 @@ app.listen(PORT, () => {
     console.log('  DELETE /data/:row - Delete specific row');
     console.log('  GET  /health - Health check');
 });
+
